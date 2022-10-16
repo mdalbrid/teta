@@ -11,6 +11,6 @@ RUN apt-get -y install postgresql-client
 
 # build go app
 RUN go mod download -x
-RUN go build -o go-app ./cmd/main.go
+RUN go build -o go-app ./cmd/main.go ./cmd/config.go
 
 CMD ["./go-app"]

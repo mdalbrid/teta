@@ -4,11 +4,11 @@ PROJECTNAME=$(shell basename "$(PWD)")
 
 ## build ...
 build:
-	go build -v ./cmd/main/app.go
+	go build -v ./cmd/main.go
 
 ## run ...
 run:
-	go run ./cmd/main/app.go
+	go run ./cmd/main.go
 
 ## test ...
 test:
