@@ -1,0 +1,15 @@
+output = "../../generated/bmodels"
+pkgname = "bmodels"
+add-soft-deletes = true
+no-tests = true
+no-hooks = true
+wipe = true
+
+[psql]
+    dbname = "postgres"
+    schema = "public"
+    host = ""
+    port = 5432
+    user = "postgres"
+    pass = "postgres"
+    sslmode = "disable"
