@@ -1,9 +1,9 @@
 package app
 
 import (
-	"context"
 	"database/sql"
 	"fmt"
+	"golang.org/x/net/context"
 )
 
 func ConnectDatabase(ctx context.Context, driverName string, dsn string) (*sql.DB, error) {

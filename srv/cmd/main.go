@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	_ "github.com/lib/pq"
 	"github.com/mdalbrid/teta/srv/internal/app"
 	"log"
 )
