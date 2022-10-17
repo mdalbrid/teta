@@ -1,48 +1,30 @@
 version: '3.8'
 
 services:
-    postgres:
-        image: postgres
+    db:
+        image: postgres:latest
         container_name: postgres_app
-        restart: unless-stopped
-        volumes:
-            - pgdata:/var/lib/postgresql/data
+        restart: always
         ports:
             - "5432:5432"
-        user: postgres
         environment:
-            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_PASSWORD=12345
+        volumes:
+            - ./.database/postgres/data:/var/lib/postgresql/data
         healthcheck:
             test: ["CMD-SHELL", "pg_isready"]
-            interval: 5s
-            timeout: 4s
+            interval: 10s
+            timeout: 5s
             retries: 3
-#        networks:
-#            default:
-#                ipv4_address: 10.93.23.10
+
     go-app:
-        container_name: app
         build: ./
-        restart: unless-stopped
+        container_name: go_app
         depends_on:
-            postgres:
+            db:
                 condition: service_healthy
-        environment:
-            APP_DSN: ${DEFAULT_DSN}
-#            - DB_PASSWORD=postgres
-#        volumes:
-#            - ./../:/app
         ports:
             - "8000:8000"
-#        networks:
-#            default:
-#                ipv4_address: 10.93.23.20
+        environment:
+            - DB_PASSWORD=12345
 
-volumes:
-    pgdata:
-#networks:
-#    default:
-#        driver: bridge
-#        ipam:
-#            config:
-#                - subnet: 10.93.23.0/16

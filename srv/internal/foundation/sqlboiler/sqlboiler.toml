@@ -8,8 +8,8 @@ wipe = true
 [psql]
     dbname = "postgres"
     schema = "public"
-    host = ""
+    host = "postgres_app"
     port = 5432
     user = "postgres"
-    pass = "postgres"
+    pass = "12345"
     sslmode = "disable"
